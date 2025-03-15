@@ -160,10 +160,10 @@ def makewindowframe():
                                 
                                 ],s=(crw-15,crh-crtbh-15))] ],justification='c', pad=(2,2),s=(crw,crh))
     cfbw=crw+fmw
-    fbh=45
+    fbh=105
     col3 = sg.Column([[sg.Frame('Actions:',
-                                [[sg.Column([[sg.Button('Save'), sg.Button('Clear'), sg.Button('Delete'),sg.I('pass',size=(10,1),justification='c',font='Courier') ]],
-                                           s=(cfbw-45,fbh), pad=(0,0))]])]], pad=(0,0),s=(crw+fmw,fbh+45))
+                                [[sg.Column([[ sg.Stretch(),sg.Button('Fire !!!',button_color=('black','orange'),font='Arial 18 bold',s=(5,3)),sg.I('pass',size=(10,1),justification='c'), sg.Button('STOP',button_color=('yellow','Red'),s=(5,3),font='Arial 18 bold')]],
+                                           justification='r',element_justification='r',s=(cfbw-45,fbh), pad=(0,0))]])]],element_justification='r',justification='r',expand_y=True, pad=(0,0),s=(crw+fmw,fbh+45))
     theme_dict = {'BACKGROUND': '#2B475D',
                 'TEXT': '#FFFFFF',
                 'INPUT': '#F2EFE8',
@@ -434,6 +434,35 @@ def loopgui():
                 mode = IDLE_MODE
                 pass
         
+        if values['-FLAMEARRESTOR_EXPLOSION_TYPE-'] is 'Detonation':
+            if values['FLAMEARRESTOR_LINE_TYPE'] is'end of line':
+                window['IR4'].update(visible=False)
+                window['IR4'].update(visible=True)
+                window['IR4'].update(visible=False)
+            elif values['FLAMEARRESTOR_LINE_TYPE'] is'in line':
+                pass
+        elif values['-FLAMEARRESTOR_EXPLOSION_TYPE-'] is 'Deflagration':
+            if values['FLAMEARRESTOR_LINE_TYPE'] is'end of line':
+                pass
+            elif values['FLAMEARRESTOR_LINE_TYPE'] is'in line':
+                pass
+        elif values['-FLAMEARRESTOR_EXPLOSION_TYPE-'] is 'Short Burning':
+            if values['FLAMEARRESTOR_LINE_TYPE'] is'end of line':
+                pass
+            elif values['FLAMEARRESTOR_LINE_TYPE'] is'in line':
+                pass
+            
+        elif values['-FLAMEARRESTOR_EXPLOSION_TYPE-'] is 'Burning':
+            if values['FLAMEARRESTOR_LINE_TYPE'] is'end of line':
+                pass
+            elif values['FLAMEARRESTOR_LINE_TYPE'] is'in line':
+                pass
+        elif values['-FLAMEARRESTOR_EXPLOSION_TYPE-'] is 'endurance Burning':
+            if values['FLAMEARRESTOR_LINE_TYPE'] is'end of line':
+                pass
+            elif values['FLAMEARRESTOR_LINE_TYPE'] is'in line':
+                pass
+
         mode_prev = mode
     if arduino is not None:
         arduino.write(b'S\n') 
